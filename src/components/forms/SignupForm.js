@@ -17,7 +17,7 @@ export default function SignupForm({ onSubmit }) {
     title: "",
     subtitle: "",
     logo: "",
-    emailInput: "",
+    emailTitle: "",
     placeholder: "",
     buttonText: "",
   });
@@ -32,6 +32,20 @@ export default function SignupForm({ onSubmit }) {
       [event.target.name]: event.target.value,
     }));
   }
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const fileContent = event.target.result;
+        setInput((prevState) => ({
+          ...prevState,
+          logo: fileContent,
+        }));
+      };
+      reader.readAsText(file);
+    }
+  };
 
   return (
     <Container>
@@ -57,7 +71,7 @@ export default function SignupForm({ onSubmit }) {
         />
         <Label htmlFor="">
           <span></span>
-          <Input type="file" />
+          <Input accept="image/*" type="file" onChange={handleFileChange} />
         </Label>
         <Label htmlFor="emailTitle">Email Input title</Label>
         <Input
@@ -87,7 +101,9 @@ export default function SignupForm({ onSubmit }) {
           type="text"
         />
         <BContainer>
-          <Cancel onClick={handleOnClose} type="button">cancel</Cancel>
+          <Cancel onClick={handleOnClose} type="button">
+            cancel
+          </Cancel>
           <Save type="submit">save</Save>
         </BContainer>
       </Form>

@@ -35,8 +35,8 @@ const Close = styled.button`
 `;
 
 export default function ConfigMenu({ node }) {
-  const { handleMenu, handleConfig } = useContext(AppContext);
-  console.log(node);
+  const { handleMenu, handleConfig, data, handleUpdateData } =
+    useContext(AppContext);
 
   function handleClose() {
     handleMenu();
@@ -46,6 +46,18 @@ export default function ConfigMenu({ node }) {
   function handleOnSubmit(response) {
     return (event) => {
       event.preventDefault();
+      const newData = {
+        ...data,
+        nodes: {
+          ...data.nodes,
+          [node.id]: {
+            ...data.nodes[node.id],
+            inputs: response,
+          },
+        },
+      };
+      handleUpdateData(newData);
+      handleMenu();
     };
   }
 
