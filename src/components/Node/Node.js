@@ -1,20 +1,10 @@
 import React, { useContext } from "react";
 import { Draggable } from "react-beautiful-dnd";
-import styled from "styled-components";
 import { AppContext } from "../../App";
-
-const ANode = styled.div`
-  width: 10rem;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  font-weight: 700;
-  margin: 1rem;
-`;
+import { ANode, HBlock, RBlock, SBlock } from "../../Utils/styled";
+import { TbWorldShare } from "react-icons/tb";
+import { RiShieldUserFill } from "react-icons/ri";
+import { BsFillSendFill } from "react-icons/bs";
 
 export default function Node({ node, index }) {
   const { handleMenu, handleConfig } = useContext(AppContext);
@@ -32,6 +22,21 @@ export default function Node({ node, index }) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
+          {node.content === "HTTP trigger" && (
+            <HBlock>
+              <TbWorldShare style={{ transform: "scale(1.5)" }} />
+            </HBlock>
+          )}
+          {node.content === "Redirect user" && (
+            <RBlock>
+              <BsFillSendFill style={{ transform: "scale(1.5)" }} />
+            </RBlock>
+          )}
+          {node.content === "Sign up Page" && (
+            <SBlock>
+              <RiShieldUserFill style={{ transform: "scale(1.5)" }} />
+            </SBlock>
+          )}
           {node.content}
         </ANode>
       )}

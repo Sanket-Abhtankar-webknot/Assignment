@@ -1,5 +1,14 @@
-import { createContext, useCallback, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 import initialData from "./Utils/initi-data";
+import { fabric } from "fabric";
+
 import { Canvas, ConfigMenu, Navbar } from "./components";
 import { DragDropContext } from "react-beautiful-dnd";
 import "./app.css";
@@ -10,6 +19,34 @@ function App() {
   const [data, setData] = useState(initialData);
   const [open, setOpen] = useState(false);
   const [nodeToConfig, setNodeToConfig] = useState(null);
+  // const [canvas, setCanvas] = useState("");
+
+  // const initCanvas = () =>
+  //   new fabric.Canvas("canvas", {
+  //     height: 700,
+  //     width: 1530,
+  //     backgroundColor: "lightgray",
+  //   });
+  // useEffect(() => {
+  //   setCanvas(initCanvas());
+  // }, []);
+
+  // const addRectangleWithClickEvent = () => {
+  //   const rect = new fabric.Rect({
+  //     left: 100,
+  //     top: 100,
+  //     fill: "red",
+  //     width: 150,
+  //     selectable: true,
+  //     height: 80,
+  //   });
+
+  //   canvas.add(rect);
+
+  //   rect.on("mousedown", () => {
+  //     alert("Rectangle clicked!");
+  //   });
+  // };
 
   const handleUpdateData = useCallback((response) => {
     setData(response);
@@ -62,6 +99,12 @@ function App() {
     setData(newCanvas);
     // console.log(newCanvas);
   }
+
+  // useEffect(() => {
+  //   if (canvas) {
+  //     addRectangleWithClickEvent();
+  //   }
+  // }, [canvas]);
 
   return (
     <AppContext.Provider value={handleContext}>

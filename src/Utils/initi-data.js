@@ -13,7 +13,7 @@ const initialData = {
         title: "",
         subtitle: "",
         logo: "",
-        emailInput: "",
+        emailTitle: "",
         placeholder: "",
         buttonText: "",
       },

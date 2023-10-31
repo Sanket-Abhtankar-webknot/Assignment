@@ -7,7 +7,7 @@ import { StrictModeDroppable } from "../Droppable/Drop";
 const Container = styled.div`
   width: max-content;
   min-height: 100;
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
 `;
 
 const Main = styled.div`
