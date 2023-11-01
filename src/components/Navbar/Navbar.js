@@ -4,6 +4,7 @@ import { BsBellFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 
 import styled from "styled-components";
+import RightNav from "./RightNav";
 
 const Nav = styled.nav`
   width: 100%;
@@ -18,10 +19,13 @@ const Nav = styled.nav`
 
 export default function Navbar() {
   return (
-    <Nav>
-      <BiSearch style={{ transform: "scale(1.5)", marginRight: "2rem" }} />
-      <BsBellFill style={{ transform: "scale(1.5)", marginRight: "2rem" }} />
-      <FaUserCircle style={{ transform: "scale(1.5)" }} />
-    </Nav>
+    <>
+      <Nav>
+        <BiSearch style={{ transform: "scale(1.5)", marginRight: "2rem" }} />
+        <BsBellFill style={{ transform: "scale(1.5)", marginRight: "2rem" }} />
+        <FaUserCircle style={{ transform: "scale(1.5)" }} />
+      </Nav>
+      <RightNav />
+    </>
   );
 }
