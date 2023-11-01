@@ -56,9 +56,20 @@ export default function ConfigMenu({ node }) {
           },
         },
       };
+      checkInputs(response, newData);
+    };
+  }
+
+  function checkInputs(obj, newData) {
+    const values = Object.keys(obj).map((key) => obj[key]);
+    const result = values.some((item) => item === "");
+    console.log(result);
+    if (!result) {
       handleUpdateData(newData);
       handleMenu();
-    };
+    } else {
+      alert("did you miss something?");
+    }
   }
 
   return (
