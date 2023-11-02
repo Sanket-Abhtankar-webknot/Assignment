@@ -63,6 +63,7 @@ function App() {
       handleUpdateData,
       handleMenu,
       data,
+      setData,
       open,
     }),
     []

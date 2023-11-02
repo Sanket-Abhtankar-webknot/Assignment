@@ -63,9 +63,9 @@ export default function ConfigMenu({ node }) {
   function checkInputs(obj, newData) {
     const values = Object.keys(obj).map((key) => obj[key]);
     const result = values.some((item) => item === "");
-    console.log(result);
     if (!result) {
       handleUpdateData(newData);
+      localStorage.setItem('nodeApp', JSON.stringify(newData))
       handleMenu();
     } else {
       alert("did you miss something?");
